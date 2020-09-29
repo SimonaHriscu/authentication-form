@@ -1,0 +1,30 @@
+.container {
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: fit-content;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    input {
+      height: 5vh;
+      border: none;
+      border-bottom: 1px solid #000000;
+      &[type='submit'] {
+        background-color: transparent;
+        border: 0.5px solid black;
+        border-radius: 10px;
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
