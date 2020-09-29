@@ -1,38 +1,73 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './_auth.scss';
 
-class Auth extends Component {
-  render() {
-    return (
-      <div className="container">
-        <h2>New User</h2>
-        <form>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            placeholder="Username"
-          />
+const Auth = () => {
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confPassword, setConfPassword] = useState('');
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
+  const submitHandle = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('userName', userName);
+    data.append('password', password);
+    data.append('confPassword', confPassword);
+    console.log(e.target.value);
+    // data.append('avatar', avatar);
+    // console.log(setUserName);
 
-          <input
-            type="password"
-            name="confPassword"
-            id="confPassword"
-            placeholder="Confirm password"
-          />
-          {/* <input type="file" name="avatar" id="avatar" /> */}
-          <input type="submit" value="Register" />
-        </form>
-      </div>
-    );
-  }
-}
+    try {
+      const result = await axios.post('/users', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log(result.data.message);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  return (
+    <div className="container">
+      <h2>New User</h2>
+      <form onSubmit={submitHandle}>
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          placeholder="Username"
+          onChange={(e) => setUserName(e.target.value)}
+          // // onChange={handleChange}
+          value={userName}
+          // // value={newUser.userName}
+        />
+
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          // //value={newUser.password}
+        />
+
+        <input
+          type="password"
+          name="confPassword"
+          id="confPassword"
+          placeholder="Confirm password"
+          onChange={(e) => setConfPassword(e.target.value)}
+          // onChange={handleChange}
+          value={confPassword}
+          // //value={newUser.confPassword}
+        />
+        {/* <input type="file" name="avatar" id="avatar" /> */}
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+  );
+};
 
 export default Auth;

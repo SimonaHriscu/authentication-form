@@ -7,23 +7,25 @@
   align-items: center;
   form {
     width: fit-content;
-    height: 30vh;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     input {
-      height: 5vh;
+      height: 4vh;
       border: none;
       border-bottom: 1px solid #000000;
+
       &[type='submit'] {
+        margin-top: 2vh;
         background-color: transparent;
         border: 0.5px solid black;
         border-radius: 10px;
-        &:focus {
-          outline: none;
-          box-shadow: none;
-        }
+      }
+      &:focus {
+        outline: none;
+        box-shadow: none;
       }
     }
   }
