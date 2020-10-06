@@ -9,15 +9,17 @@ const Auth = () => {
 
   const submitHandle = async (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append('userName', userName);
-    data.append('password', password);
-    data.append('confPassword', confPassword);
-    console.log(e.target.value);
+    const data = { userName: userName, password: password };
+    // const form = new FormData();
+    // form.append('userName', userName);
+    // form.append('password', password);
+    // form.append('confPassword', confPassword);
+    // console.log(e.target.value);
     // data.append('avatar', avatar);
-    // console.log(setUserName);
+    // console.log(setUserName());
 
     try {
+      console.log(data);
       const result = await axios.post('/users', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -27,6 +29,20 @@ const Auth = () => {
     } catch (err) {
       console.log(err.message);
     }
+    // const response = await axios({
+    //   method: 'post',
+    //   url: '/users',
+    //   data: form,
+    //   headers: { 'Content-Type': 'multipart/form-data' },
+    // })
+    //   .then(function (response) {
+    //     //handle success
+    //     console.log(form);
+    //   })
+    //   .catch(function (response) {
+    //     //handle error
+    //     console.log(response);
+    //   });
   };
   return (
     <div className="container">
