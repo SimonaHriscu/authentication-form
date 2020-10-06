@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const EMAIL_ALREADY_USED = 'EMAIL_ALREADY_USED';
-const INVALID_EMAIL = 'INVALID_EMAIL';
+const INVALID_USERNAME = 'INVALID_USERNAME';
 const WRONG_PASSWORD = 'WRONG_PASSWORD';
 
 const getAllUsers = async (req, res) => {
@@ -53,7 +53,7 @@ const registerUser = async (req, res) => {
 const login = async (req, res) => {
   const user = await User.findOne({ userName: req.body.userName });
   if (!user) {
-    return res.status(404).json({ status_code: INVALID_EMAIL });
+    return res.status(404).json({ status_code: INVALID_USERNAME });
   }
   try {
     if (!(await bcrypt.compare(req.body.password, user.password))) {
@@ -68,7 +68,7 @@ const login = async (req, res) => {
       },
       process.env.JWT_SECRET
     );
-    res.json({ token: token });
+    res.json({ jwt: token });
   } catch (err) {
     console.log(err.message),
       res.status(500).json({
