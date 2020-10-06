@@ -10,40 +10,15 @@ const Auth = () => {
   const submitHandle = async (e) => {
     e.preventDefault();
     const data = { userName: userName, password: password };
-    // const form = new FormData();
-    // form.append('userName', userName);
-    // form.append('password', password);
-    // form.append('confPassword', confPassword);
-    // console.log(e.target.value);
-    // data.append('avatar', avatar);
-    // console.log(setUserName());
 
-    try {
-      console.log(data);
-      const result = await axios.post('/users', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log(result.data.message);
-    } catch (err) {
-      console.log(err.message);
-    }
-    // const response = await axios({
-    //   method: 'post',
-    //   url: '/users',
-    //   data: form,
-    //   headers: { 'Content-Type': 'multipart/form-data' },
-    // })
-    //   .then(function (response) {
-    //     //handle success
-    //     console.log(form);
-    //   })
-    //   .catch(function (response) {
-    //     //handle error
-    //     console.log(response);
-    //   });
+    const response = axios
+      .post('/login', data)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err.message));
   };
+
   return (
     <div className="container">
       <h2>New User</h2>
