@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
   );
 
   if (userCheck) {
-    return res.status(400).json({ error_code: EMAIL_ALREADY_USED });
+    return res.status(400).json({ status: EMAIL_ALREADY_USED });
   }
   if (req.body.password !== req.body.confPassword) {
     return res.status(404).send('Passwords do not match!');
@@ -53,22 +53,23 @@ const registerUser = async (req, res) => {
 const login = async (req, res) => {
   const user = await User.findOne({ userName: req.body.userName });
   if (!user) {
-    return res.status(404).json({ status_code: INVALID_USERNAME });
+    return res.status(404).json({ status: INVALID_USERNAME });
   }
   try {
     if (!(await bcrypt.compare(req.body.password, user.password))) {
       //comparing the passwords
-      res.status(400).json({ status_code: WRONG_PASSWORD });
+      res.status(400).json({ status: WRONG_PASSWORD });
     }
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        expireDate: getCurrentDateWithAddedHours(2),
-      },
-      process.env.JWT_SECRET
-    );
-    res.json({ jwt: token });
+    // const token = jwt.sign(
+    //   {
+    //     id: user.id,
+    //     email: user.email,
+    //     userName: user.userName,
+    //     expireDate: getCurrentDateWithAddedHours(2),
+    //   },
+    //   process.env.JWT_SECRET
+    // );
+    res.status(200).json({ status: 'Successfully logged in!' });
   } catch (err) {
     console.log(err.message),
       res.status(500).json({
