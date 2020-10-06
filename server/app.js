@@ -24,8 +24,7 @@ app.use(express.json());
 
 const userControllers = require('./controllers/userControllers');
 app
-  .get('/users', userControllers.getAllUsers)
-  .post('/users', userControllers.addUser);
+  .get('/register', userControllers.getAllUsers)
+  .post('/register', userControllers.registerUser);
 app.post('/login', userControllers.login);
-//app.post('/register', userControllers.registerUser);
 module.exports = app;

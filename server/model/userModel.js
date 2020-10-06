@@ -5,6 +5,8 @@ let validateEmail = function (email) {
   let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
+// alternatively: import { isEmail } from 'validator'; validate: [ isEmail, 'invalid email' ]
+
 const userSchema = Schema({
   _id: Schema.Types.ObjectId,
   userName: {
@@ -32,6 +34,13 @@ const userSchema = Schema({
   password: {
     type: String,
     required: 'Password is required',
+    trim: true,
+    min: 5,
+    max: 50,
+  },
+  confPassword: {
+    type: String,
+    required: 'Confirmed password is required',
     trim: true,
     min: 5,
     max: 50,
