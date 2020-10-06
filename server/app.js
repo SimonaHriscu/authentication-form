@@ -27,5 +27,5 @@ app
   .get('/users', userControllers.getAllUsers)
   .post('/users', userControllers.addUser);
 app.post('/login', userControllers.login);
-app.post('/register', userControllers.registerUser);
+//app.post('/register', userControllers.registerUser);
 module.exports = app;

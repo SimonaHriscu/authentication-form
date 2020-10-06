@@ -30,7 +30,7 @@ const addUser = async (req, res) => {
       password: hashedPassword,
     });
     newUser.save();
-    res.status(201).send('new user added');
+    res.status(201).json({ status: 'Success!', newUser });
   } catch (err) {
     res.status(500).json({
       message: err.message,
@@ -40,12 +40,13 @@ const addUser = async (req, res) => {
 
 const login = async (req, res) => {
   const user = await User.findOne({ userName: req.body.userName });
-  if (user == null) {
+  if (!user) {
     return res.status(400).send('Cannot find user');
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send('Success');
+      //comparing the passwords
+      res.send('Login successful');
     } else {
       res.send('Not Allowed');
     }
