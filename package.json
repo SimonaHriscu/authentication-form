@@ -17,6 +17,7 @@
     "express-validator": "^6.6.1",
     "handlebars": "^4.7.6",
     "http": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
