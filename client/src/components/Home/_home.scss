@@ -1,0 +1,22 @@
+.home-container {
+  width: 70vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  button {
+    width: 12rem;
+    height: 5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    background-color: #c56183;
+    color: #fadcaa;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
