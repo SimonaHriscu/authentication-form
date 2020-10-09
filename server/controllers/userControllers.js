@@ -60,16 +60,17 @@ const login = async (req, res) => {
       //comparing the passwords
       res.status(400).json({ status: WRONG_PASSWORD });
     }
-    // const token = jwt.sign(
-    //   {
-    //     id: user.id,
-    //     email: user.email,
-    //     userName: user.userName,
-    //     expireDate: getCurrentDateWithAddedHours(2),
-    //   },
-    //   process.env.JWT_SECRET
-    // );
-    res.status(200).json({ status: 'Successfully logged in!' });
+    console.log(user);
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        userName: user.userName,
+        expireDate: getCurrentDateWithAddedHours(2),
+      },
+      process.env.JWT_SECRET
+    );
+    res.status(200).json({ status: 'Success', user });
   } catch (err) {
     console.log(err.message),
       res.status(500).json({
