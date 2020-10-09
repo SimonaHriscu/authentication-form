@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './_home.scss';
 import { Switch, Link } from 'react-router-dom';
-import { Transition, CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 const Home = () => {
   const [inProp, setInProp] = useState(true);
   // const [loading, setLoading] = useState(true);
+
   return (
     <div className="home-container">
       <Link to="/register">
@@ -23,7 +24,6 @@ const Home = () => {
           </button>
         </CSSTransition>
       </Link>
-
       <Link to="/login">
         <CSSTransition
           unmountOnExit
@@ -37,6 +37,8 @@ const Home = () => {
           <button onClick={() => setInProp(false)}>Already a member?</button>
         </CSSTransition>
       </Link>
+
+      {/* <button>LOG OUT</button> */}
     </div>
   );
 };

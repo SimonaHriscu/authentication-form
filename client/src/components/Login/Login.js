@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [data, setData] = useState({
+    user: {
+      userName: 'user',
+    },
+  });
+  const [logIn, setLogIn] = useState(false);
+  const history = useHistory();
 
   const submitHandle = async (e) => {
     e.preventDefault();
@@ -16,13 +24,16 @@ const Login = () => {
       .post('/login', data)
       .then(({ data }) => {
         console.log(data);
+        setData(data);
+        history.push('/');
+        setLogIn(true);
       })
       .catch((err) => console.log(err.message));
   };
 
   return (
     <div className="container">
-      <h2>Welcome back!</h2>
+      <h2>Welcome back {data.user.userName}!</h2>
       <form onSubmit={submitHandle}>
         <input
           type="text"
