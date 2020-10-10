@@ -1,1 +1,1 @@
-# full authentication
+# full authentication page
