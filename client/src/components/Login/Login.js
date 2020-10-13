@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loggedIn } from '../../actions';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
@@ -12,7 +14,7 @@ const Login = () => {
   });
   const [logIn, setLogIn] = useState(false);
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const submitHandle = async (e) => {
     e.preventDefault();
     const data = {
@@ -27,6 +29,7 @@ const Login = () => {
         setData(data);
         history.push('/');
         setLogIn(true);
+        dispatch(loggedIn());
       })
       .catch((err) => console.log(err.message));
   };
