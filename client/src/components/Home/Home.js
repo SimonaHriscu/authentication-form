@@ -26,7 +26,6 @@ const Home = () => {
               appear
               unmountOnExit
               onClick={() => setInProp(false)}
-              // onEnter={() => setInProp(true)}
             >
               <button onClick={() => setInProp(!useState)}>
                 Are you new here?
@@ -40,8 +39,6 @@ const Home = () => {
               timeout={{ appear: 0, enter: 0, exit: 300 }}
               classNames="slide-right"
               appear
-              //onEnter={() => setInProp(false)}
-              // onEnter={() => setInProp(true)}
             >
               <button onClick={() => setInProp(false)}>
                 Already a member?

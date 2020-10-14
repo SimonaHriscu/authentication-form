@@ -13,13 +13,13 @@ const Auth = () => {
   const [confPassword, setConfPassword] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
-  useEffect(() => {
-    return () => {
-      setTimeout(() => {
-        dispatch(loading());
-      }, 4400);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     setTimeout(() => {
+  //       dispatch(loading());
+  //     }, 4400);
+  //   };
+  // }, []);
   const submitHandle = async (e) => {
     e.preventDefault();
     const data = {
