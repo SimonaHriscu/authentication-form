@@ -29,7 +29,7 @@ const Auth = () => {
       confPassword: confPassword,
     };
     const response = axios
-      .post('/register', data)
+      .post('/account/register', data)
       .then(({ data }) => {
         console.log(data);
         // {

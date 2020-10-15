@@ -23,7 +23,7 @@ const Login = () => {
     };
 
     const response = axios
-      .post('/login', data)
+      .post('/account/login', data)
       .then(({ data }) => {
         console.log(data);
         setData(data);

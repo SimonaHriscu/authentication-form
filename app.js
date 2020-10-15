@@ -33,9 +33,9 @@ app.use(express.static(path.join(__dirname, './client/build')));
 //Routes
 const userControllers = require('./controllers/userControllers');
 app
-  .get('/register', userControllers.getAllUsers)
-  .post('/register', userControllers.registerUser);
-app.post('/login', userControllers.login);
+  .get('/account/register', userControllers.getAllUsers)
+  .post('/account/register', userControllers.registerUser);
+app.post('/account/login', userControllers.login);
 
 //send react application
 app.get('/', function (req, res) {
