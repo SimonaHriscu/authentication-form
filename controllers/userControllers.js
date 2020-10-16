@@ -68,7 +68,7 @@ const login = async (req, res) => {
         userName: user.userName,
         expireDate: getCurrentDateWithAddedHours(2),
       },
-      'ghdkHDGJHSGDKjhdgkghkgk'
+      process.env.JWT_SECRET
     );
     res.status(200).json({ status: 'Success', user });
   } catch (err) {

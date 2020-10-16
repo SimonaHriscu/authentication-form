@@ -13,14 +13,11 @@ app.use(bodyParser.raw());
 const mongoose = require('mongoose');
 
 mongoose
-  .connect(
-    'mongodb+srv://simo:NzDv9m1UacOtHKhs@cluster0.wx3du.mongodb.net/authentication?retryWrites=true&w=majority',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(console.log('DB is connected'))
   .catch((error) => {
     console.log(`There was a problem ${error.message}`);
